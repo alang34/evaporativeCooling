@@ -33,6 +33,9 @@ def plot_all(csv_files, x, y, log):
     if log:
         plt.xscale('log')
     plt.show()
+
+
+
 # plot(csv_files[4], "Timestamp", "RH", False)
 # plot(csv_files[2], "Timestamp", "Temp", False)
 plot_all(csv_files, "Timestamp", "Temp", False)
