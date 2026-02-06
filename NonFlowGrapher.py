@@ -26,9 +26,9 @@ def plot_all(csv_files, x, y, log):
     for csv in csv_files:
         df = pd.read_csv(csv)
         plt.plot(df[x], df[y], label = f'Run {csv[-5]}')
-    plt.xlabel("t")
-    plt.ylabel("T")
-    plt.title(f'Non-Dimensionalized Time vs Temperature')
+    plt.xlabel(x)
+    plt.ylabel(y)
+    plt.title(f'{x} vs {y} for All Runs')
     plt.grid(True)
     if log:
         plt.xscale('log')
