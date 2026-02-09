@@ -1,12 +1,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 from matplotlib.ticker import LogLocator
-csv_files = ['Actual Data/Nonflow Data/nonflow_run_1.csv',
-             'Actual Data/Nonflow Data/nonflow_run_2.csv',
-             'Actual Data/Nonflow Data/nonflow_run_3.csv',
-             'Actual Data/Nonflow Data/nonflow_run_4.csv',
-             'Actual Data/Nonflow Data/nonflow_run_5.csv',
-             'Actual Data/Nonflow Data/nonflow_run_6.csv']
+csv_files = ['Data/setupDataArchive/nonflow_run_4.csv']
 
 def plot(csv, x, y, log):
     df = pd.read_csv(csv)
@@ -37,5 +32,5 @@ def plot_all(csv_files, x, y, log):
 
 
 # plot(csv_files[4], "Timestamp", "RH", False)
-# plot(csv_files[2], "Timestamp", "Temp", False)
-plot_all(csv_files, "Timestamp", "Temp", False)
+plot(csv_files[0], "Timestamp", "Temp", False)
+# plot_all(csv_files, "Timestamp", "Temp", False)
