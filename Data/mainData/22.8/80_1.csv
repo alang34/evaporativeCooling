@@ -1,8 +1,4 @@
-Ä„û˜+v|˝Ò£ÛÎ}Ê∫¸ˇˇÆˆ¸˝Iß‚’g˜Û∑Êÿ.Ê¿g„SHT31 test
-Sensor on channel 0 found at 0x44
-No sensor found on channel 1
-No sensor found on channel 2
-MAX6675 test
+Timestamp,Temp,RH,Bed,Water
 0.56,19.95,79.68,20.50,19.00
 0.68,19.95,79.95,20.50,19.00
 0.81,19.95,79.97,20.50,19.00
