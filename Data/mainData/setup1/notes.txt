@@ -1,0 +1,5 @@
+all runs done with a singular, dense package of sensors on a foot long strip
+
+data2.csv: compressor turned on at t = 10s
+data3.csv: 60SCFM
+data4.csv: 20SCFM switched to 60 @ 100s

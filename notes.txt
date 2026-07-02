@@ -1,0 +1,14 @@
+vent 1: 35 compressor applied, 135 compressor released
+
+vent 2: 350 compressor applied, 393 compressor released, 1650 AC turned on
+
+long3.csv: 2000 (compressor applied), completely open and vented
+
+long4.csv: 132 (compressor released), 12 (compressor applied)
+
+data1.csv: new sensor integrated in
+data2.csv: final setup integrated and tested. proves the flowbox case
+
+point1.csv: bogus, AC was on
+point2.csv: AC was also on
+point3.csv: final, no change in temp for airflow
