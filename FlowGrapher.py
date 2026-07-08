@@ -7,7 +7,7 @@ from matplotlib.ticker import LogLocator
 #              'Data/mainData/22.8/40_2.csv',
 #              'Data/mainData/22.8/40_3.csv',
 csv_files = ['Data/mainData/setup1/data2.csv']
-csv_singular = ['Data/mainData/setup1/data3.csv']
+csv_singular = ['Data/mainData/setup1/data4.csv']
 
 
 def plot_all(csv_files, x, y, log):
@@ -26,7 +26,7 @@ def plot_all(csv_files, x, y, log):
         plt.xscale('log')
     plt.show()
 
-def intervalPlot(csv_singular, xVal, yVal, subdivisions, start_index, flags):
+def SRintervalPlot(csv_singular, xVal, yVal, subdivisions, start_index, flags):
     plt.figure(figsize=(8,6))
     df = pd.read_csv(csv_singular[0])
     length = len(df["Timestamp"])
@@ -36,15 +36,31 @@ def intervalPlot(csv_singular, xVal, yVal, subdivisions, start_index, flags):
         indexArr.append(i)
     for j, index in enumerate(indexArr):
         color = cmap(j / (len(indexArr) - 1))
-        # for flag in flags:
-            # if abs(flag-index) < length//subdivisions
         # plt.plot(np.array([0,1,2,3,4,5,6,7]),np.array([float(df[f"{yVal}0"].iloc[index]), float(df[f"{yVal}1"].iloc[index]), float(df[f"{yVal}2"].iloc[index]), float(df[f"{yVal}3"].iloc[index]), float(df[f"{yVal}4"].iloc[index]), float(df[f"{yVal}5"].iloc[index]), float(df[f"{yVal}6"].iloc[index]), float(df[f"{yVal}7"].iloc[index])]), color = color)
         plt.plot(np.array([0,1,2,3,4,5]),np.array([float(df[f"{yVal}0"].iloc[index]), float(df[f"{yVal}1"].iloc[index]), float(df[f"{yVal}2"].iloc[index]), float(df[f"{yVal}3"].iloc[index]), float(df[f"{yVal}4"].iloc[index]), float(df[f"{yVal}A"].iloc[index])]), color = color)
-    plt.xlabel(xVal)
+    for flag in flags:
+        plt.plot(np.array([0,1,2,3,4,5]),np.array([float(df[f"{yVal}0"].iloc[flag]), float(df[f"{yVal}1"].iloc[flag]), float(df[f"{yVal}2"].iloc[flag]), float(df[f"{yVal}3"].iloc[flag]), float(df[f"{yVal}4"].iloc[flag]), float(df[f"{yVal}A"].iloc[flag])]), color = "red")
+    plt.xlabel("Position Index")
     plt.ylabel(yVal)
     plt.title(f'{xVal} vs {yVal} showing space/time progression')
     plt.grid(True)
     plt.legend([f"{subdivisions} subdivisions on a {df['Timestamp'].iloc[indexArr[-1]]}s interval"])
     plt.show()
-# plot_all(csv_files, "Timestamp", "RH", False)
-intervalPlot(csv_singular, "Timestamp", "RH", 100, 0, 99)
+
+def TRmultiplot(csv_singular, xVal, yVal, list, flags):
+    plt.figure(figsize=(8,6))
+    df = pd.read_csv(csv_singular[0])
+    for flag in flags:
+        plt.axvline(x=flag, color='red', linestyle='--')
+    for el in list:
+        plt.plot(df['Timestamp'], df[yVal+el], label=yVal+el)
+    plt.xlabel("Position Index")
+    plt.ylabel(yVal[0][:-1])
+    plt.title(f'{xVal} vs {yVal} showing space/time progression')
+    plt.grid(True)
+    plt.legend()
+    plt.show()
+
+# SRintervalPlot(csv_singular, "Timestamp", "RH", 30, 0, [99])
+TRmultiplot(csv_singular, "Timestamp", "Temp",["0","1","2","3","4","A"] , [100])
+
